@@ -35,5 +35,8 @@ files:
     learner_created: false
 feedback_link: https://hyperskill.org/projects/265/stages/1339/implement#comment
 check_profile: hyperskill_node_javascript
-status: Unchecked
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: "Thu, 28 Dec 2023 21:49:36 UTC"
 record: -1
