@@ -33,25 +33,7 @@ files:
       if __name__ == '__main__':
           HangmanTest('hangman.hangman').run_tests()
     learner_created: false
-feedback_link: https://hyperskill.org/projects/265/stages/1339/implement#comment
+feedback_link: https://hyperskill.org/learn/step/20572#comment
 check_profile: hyperskill_node_javascript
-status: Failed
-feedback:
-  message: |-
-    Wrong answer in test #1
-
-    It looks like your output is wrong.
-    Input: python
-    Correct output: You survived!
-
-    Please find below the output of your program during this failed test.
-    Note that the '>' character indicates the beginning of the input line.
-
-    ---
-
-    swift
-    H A N G M A N
-    Guess the word: > python
-    You lost!
-  time: "Fri, 29 Dec 2023 12:33:01 UTC"
+status: Solved
 record: 1
