@@ -1,0 +1,18 @@
+type: choice
+is_multiple_choice: true
+options:
+  - text: The <code>else</code> block is executed when the condition is true
+  - text: The <code>if</code> block is executed when the condition is true
+  - text: The <code>else if</code> can be used just once for one additional condition
+  - text: The condition inside the parentheses is converted to a boolean
+files:
+  - name: main.js
+    visible: true
+    text: |+
+      // You can experiment here, it won’t be checked
+    
+    learner_created: false
+feedback_link: https://hyperskill.org/learn/step/8892#comment
+status: Solved
+record: -1
+local_check: false

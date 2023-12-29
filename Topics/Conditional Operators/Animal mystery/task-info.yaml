@@ -1,0 +1,18 @@
+type: choice
+is_multiple_choice: false
+options:
+  - text: <code>Mystery</code>
+  - text: <code>Error</code>
+  - text: <code>Dog!</code>
+  - text: <code>Cat!</code>
+files:
+  - name: main.js
+    visible: true
+    text: |+
+      // You can experiment here, it won’t be checked
+    
+    learner_created: false
+feedback_link: https://hyperskill.org/learn/step/8893#comment
+status: Solved
+record: -1
+local_check: false

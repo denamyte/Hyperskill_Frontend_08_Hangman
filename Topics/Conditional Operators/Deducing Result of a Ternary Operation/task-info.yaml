@@ -1,0 +1,19 @@
+type: choice
+is_multiple_choice: false
+options:
+  - text: '&lt;code&gt;undefined&lt;/code&gt;'
+  - text: '&lt;code&gt;a &lt; b&lt;/code&gt;'
+  - text: '&lt;code&gt;a is not less than b&lt;/code&gt;'
+  - text: '&lt;code&gt;a is less than b&lt;/code&gt;'
+  - text: '&lt;code&gt;true&lt;/code&gt;'
+files:
+  - name: main.js
+    visible: true
+    text: |+
+      // You can experiment here, it won’t be checked
+    
+    learner_created: false
+feedback_link: https://hyperskill.org/learn/step/31510#comment
+status: Solved
+record: -1
+local_check: false
