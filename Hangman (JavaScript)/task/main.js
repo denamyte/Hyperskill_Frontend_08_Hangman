@@ -1,9 +1,10 @@
 const input = require('sync-input')
 
-const word = "python";
+const words = ["python", "java", "swift", "javascript"];
+const index = Math.floor(Math.random() * words.length);
 const welcome = () => console.log("H A N G M A N");
 const ask = msg => input(msg);
-const defineRes = userInp => userInp === word;
+const defineRes = userInp => userInp === words[index];
 const showRes = flag => console.log(flag ? "You survived!" : "You lost!");
 
 function main() {
