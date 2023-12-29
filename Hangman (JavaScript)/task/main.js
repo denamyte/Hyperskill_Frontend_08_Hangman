@@ -2,22 +2,35 @@ const input = require('sync-input')
 
 const words = ["python", "java", "swift", "javascript"];
 const word = words[Math.floor(Math.random() * words.length)];
-const knownIndices = [0, 1, 2];
-const welcome = () => console.log("H A N G M A N");
+const knownLetters = [];
+const welcome = () => console.log("H A N G M A N\n");
+const thanks = () => console.log("Thanks for playing!");
 const ask = msg => input(msg);
 const getWordMask = () =>
     word.split('')
-        .map((letter, i) =>
-            i in knownIndices ? letter : '-')
+        .map((letter) =>
+            knownLetters.includes(letter) ? letter : '-')
         .join("");
-const defineRes = userInp => userInp === word;
-const showRes = flag => console.log(flag ? "You survived!" : "You lost!");
+
+function checkLetter(letter) {
+    if (word.includes(letter)) {
+        if (!knownLetters.includes(letter))
+            knownLetters.push(letter);
+        console.log(knownLetters);
+    } else {
+        console.log("That letter doesn't appear in the word.");
+    }
+}
 
 function main() {
+    let attemptCount = 8;
     welcome();
-    const mask = getWordMask();
-    const userInp = ask(`Guess the word ${mask}: `);
-    showRes(defineRes(userInp))
+    while (attemptCount-- > 0) {
+        console.log(getWordMask())
+        checkLetter(ask("Input a letter: "));
+        console.log("");
+    }
+    thanks();
 }
 
 main()
