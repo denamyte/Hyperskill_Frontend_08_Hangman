@@ -35,8 +35,18 @@ files:
     learner_created: false
 feedback_link: https://hyperskill.org/projects/265/stages/1339/implement#comment
 check_profile: hyperskill_node_javascript
-status: Solved
+status: Failed
 feedback:
-  message: <html>Correct solution</html>
-  time: "Thu, 28 Dec 2023 21:49:36 UTC"
-record: -1
+  message: |-
+    Wrong answer in test #1
+
+    Please, print the output exactly like it is given in the example.
+
+    Please find below the output of your program during this failed test.
+
+    ---
+
+    H A N G M A N
+    Guess the word:
+  time: "Fri, 29 Dec 2023 12:09:19 UTC"
+record: 1
