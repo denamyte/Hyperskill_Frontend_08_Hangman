@@ -26,10 +26,10 @@ function checkLetter(letter) {
     }
 }
 
+const lost = () => attemptCount <= 0;
 const win = () => word
     .split("")
     .every(letter => knownLetters.includes(letter));
-const lost = () => attemptCount <= 0;
 
 function main() {
     welcome();
