@@ -752,5 +752,8 @@ files:
     learner_created: false
 feedback_link: https://hyperskill.org/learn/step/20578#comment
 check_profile: hyperskill_node_javascript
-status: Unchecked
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: "Sat, 30 Dec 2023 20:26:24 UTC"
 record: -1
