@@ -1,0 +1,1 @@
+const sizeOfMyMap = myMap.size;

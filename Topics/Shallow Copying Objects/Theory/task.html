@@ -1,0 +1,191 @@
+<h2>Shallow Copying Objects</h2>
+<div class="step-text">
+<p>In JavaScript, there are fundamental differences in storing and copying between objects and primitives. You can copy primitive values such as strings, numbers, or booleans just using <code class="language-javascript">=</code>, but objects are stored in memory like references, so you can't duplicate them in the same way. In this topic, you will learn about some methods which can help you with this problem. </p>
+<h5 id="reference-type">Reference type</h5>
+<p>What is a reference type? Let's start with primitives. Here we put a copy of <code class="language-javascript">skill</code> into <code class="language-javascript">myStack</code>. </p>
+<pre><code class="language-javascript">let skill = 'JavaScript';
+let myStack = skill;</code></pre>
+<p>Now you have two independent variables, which means that if you want to change one of the variables above, the other won't change.</p>
+<pre><code class="language-javascript">// above code is used here
+let skill = 'HTML';
+console.log(skill); // 'HTML'
+console.log(myStack); // 'JavaScript'</code></pre>
+<p>Quite simple, isn't it? As for objects, the situation is different. Let's look at an example:</p>
+<p>You have two objects, <code class="language-javascript">developer</code> and <code class="language-javascript">student</code>, but what happens if you try to change a property in one of them?</p>
+<pre><code class="language-javascript">let developer = { name: 'John', position: 'Frontend' };
+let student = developer;
+
+student.name = 'Karl';
+console.log(student); // { name: 'Karl', position: 'Frontend' }
+console.log(developer); // { name: 'Karl', position: 'Frontend' }</code></pre>
+<p>You wanted to change one property only in the object <code class="language-javascript">student</code>, but the same property in the <code class="language-javascript">developer</code> has has also been changed. Why is that?</p>
+<p>Here we got to the definition of a <strong>reference type</strong>. An object is stored somewhere in memory, and a variable (like <code class="language-javascript">developer</code>) has a reference to it. That's why here you don't duplicate the object but just copy the reference to it. If you try to change one of the object's properties, that property will change on both variables. That's because objects are reference types<strong> </strong>(so are arrays and functions). And when you use <code class="language-javascript">=</code>, it copies the pointer to the memory space it occupies. So, the variables of reference types don't actually contain the value — they are just pointers to the value in memory.</p>
+<p>It's also essential for comparison: objects are equal only if they have the same reference or, in other words, if it's just one object. </p>
+<p>In our previous example, you copy a reference (not an object), and that's why these two variables are equal.</p>
+<pre><code class="language-javascript">// look at the code above
+console.log(developer === student); // true</code></pre>
+<p>At first glance, here you have two identical objects <code class="language-javascript">a</code> and <code class="language-javascript">b</code>: they are both empty but have different references, so they are not equal.</p>
+<pre><code class="language-javascript">let a = {};
+let b = {};
+console.log (a === b); // false</code></pre>
+<p>So, using <code class="language-javascript">=</code> you can copy only primitives values, whereas in the case of reference types you just copy its reference. Reference types will be equal only if you compare two identical references.</p>
+<pre><code class="language-javascript">let c = {};
+let d = c;
+console.log(c === d); // true</code></pre>
+<p>However, there are a few methods that can help you copy objects. Let's have a look at them!</p>
+<h5 id="using-spread">Using spread</h5>
+<p>You can clone your object using the <strong>spread</strong> operator. This method unpacks the properties of one object into another: </p>
+<pre><code class="language-javascript">const developer = {
+   name: 'John',
+   age: 26,
+};
+const student = { ...developer };
+console.log(student); 
+/* 
+{
+   name: 'John',
+   age: 26,
+};
+*/</code></pre>
+<p>Now you have an actual copy of the object, not just a reference copy. And these two objects are independent, which you can check:</p>
+<pre><code class="language-javascript">// above code is used here
+console.log(developer === student); // false
+
+student.name = 'Ben';
+console.log(developer.name, student.name); // 'John' 'Ben'</code></pre>
+<p>As you can see, the objects are not equal, so they have different references, and when you change one of the properties, it doesn't affect the other variable. </p>
+<p>Let's look at a more complex object like this:</p>
+<pre><code class="language-javascript">// man object
+
+let man = {
+  name: "Jack",
+  age: 28,
+  mother: {
+    name: "Kate",
+    age: 50,
+  },
+};</code></pre>
+<p>This object has not only primitives properties (like <code class="language-javascript">name</code> and <code class="language-javascript">age</code>), but also a property <code class="language-javascript">mother</code>, which is also an object. Such objects are called <strong>nested objects</strong>. In other words, they are objects inside other objects: an object can have another object, array, or function (method) as a property. Let's copy this object using spread:</p>
+<pre><code class="language-javascript">// man object is used here
+
+let manCopy = { ...man };
+console.log(man === manCopy); // false
+
+manCopy.age = 42;
+console.log(man.age, manCopy.age); // 28 42
+</code></pre>
+<p>On primitives, it works as expected. Let's take a look at the <code class="language-javascript">mother</code> property:</p>
+<pre><code class="language-javascript">// above code is used here
+console.log(man.mother === manCopy.mother); // true
+
+manCopy.mother.age = 67;
+console.log(man.mother); // { name: 'Kate', age: 67 }
+console.log(manCopy.mother); // { name: 'Kate', age: 67 }</code></pre>
+<p>Here we have the same problem again: the spread operator clones only primitives, but if you have reference type properties, this method copies only their references. It is called a<strong> shallow copy.</strong><em> </em>This means both variables point to the same object in memory. As a result, if the state of the object changes through any of the reference variables, it is reflected in both. </p>
+<p>So, when you clone a nested object using spread, properties that are reference types (such as objects, arrays, or functions) copy only their references. But you can use spread on all references, including properties. For this, you must find the exact path for each property that has reference types:</p>
+<pre><code class="language-javascript">// man object is used here
+
+manFullCopy = { ...man, mother: { ...man.mother }};
+console.log(man === manFullCopy); // false
+console.log(man.mother === manFullCopy.mother); // false</code></pre>
+<p>In this example, the object is located in the variable <code class="language-javascript">man</code>(given above in the topic). The property <code class="language-javascript">mother</code> is also an object, and it is located in <code class="language-javascript">man.mother</code>. You need to use the spread operator for all references. First, you name the property of an object and then use <code class="language-javascript">{...object.property}</code>.</p>
+<p>Take a look at another example:</p>
+<pre><code class="language-javascript">const family = {
+  child: {
+    name: "Jack",
+    age: 5,
+  },
+  father: {
+    name: "Kevin",
+    age: 30,
+  },
+  mother: {
+    name: "Jess",
+    age: 30,
+  },
+};
+
+console.log(family.child); //{name: 'Jack', age: 5}
+console.log(family.father); //{name: 'Kevin', age: 30}
+console.log(family.mother); //{name: 'Jess', age: 30}
+</code></pre>
+<p><code class="language-javascript">family</code> is an object with 3 properties: <code class="language-javascript">child</code>, <code class="language-javascript">father</code>, and <code class="language-javascript">mother</code>. In turn, these properties are also objects, they are references and their addresses are <code class="language-javascript">family.child</code>, <code class="language-javascript">family.father</code>, <code class="language-javascript">family.mother</code> respectively. So to get a full copy of <code class="language-javascript">family</code>, you should copy all these references:</p>
+<pre><code class="language-javascript">// above code is used here
+
+const deepFamilyCopy = {
+  child: { ...family.child },
+  father: { ...family.father },
+  mother: { ...family.mother },
+};</code></pre>
+<p>Looks quite complicated, doesn' it? And what if you have an object like this:</p>
+<pre><code class="language-javascript">const complicatedMan = {
+        name: 'John',
+        age: 28,
+        mother: {
+            name: 'Kate',
+            age: 50,
+            work: {
+                position: 'doctor',
+                experience: 15,
+                address: {
+                       street: 'Park Avenue',
+                       house: 1
+                 }
+            }
+       }
+  };</code></pre>
+<p>Even if you are well aware of how to use spread, it might all still be confusing.</p>
+<p>For copying such nested objects, you should use not shallow copying but deep copy methods. A<strong> deep copy</strong> of an object has properties that don't share the same references as the source object from which the copy was made. You will learn about these methods in the next topic.</p>
+<p>The spread operator is perfect for simple non-nested objects, but it's not the most appropriate if you have more complex objects. Let's see what to do in such cases!</p>
+<p>You can see the full copy of the previous example below. Not so clear and readable, is it?</p>
+<p></p><div class="alert alert-primary">
+<pre><code class="language-javascript">// above code is used here
+const complicatedManFullCopy = { ...complicatedMan, 
+                           mother: { ...complicatedMan.mother, 
+                               work: { ...complicatedMan.mother.work,
+                                  address: { ...complicatedMan.mother.work.address }
+                     }
+               }
+         };</code></pre>
+<p></p></div>
+<h5 id="using-objectassign">Using Object.assign</h5>
+<p>This method also allows getting a shallow copy of the object. The syntax goes like this:</p>
+<p><code class="language-javascript">Object.assign(targetObj, source1, source2, ...etc);</code></p>
+<p>The first argument is a target object (it can be just an empty object <code class="language-javascript">{}</code>). Further arguments are a list of objects, and all their properties are copied into the target object. For example:</p>
+<pre><code class="language-javascript">const man = { name: 'Ross' };
+const property1 = { surname: 'Geller' };
+const property2 = { occupation: 'Paleontologist' };
+Object.assign(man, property1, property2);
+
+console.log(man); // { name: 'Ross', surname: 'Geller', occupation: 'Paleontologist' }</code></pre>
+<p>Or if you need to copy one object, you can do this:</p>
+<pre><code class="language-javascript">const woman = { name: 'Monica', surname: 'Geller' };
+const cloneWoman = Object.assign({}, woman);
+
+console.log(cloneWoman); // { name: 'Monica', surname: 'Geller' }
+console.log(woman === cloneWoman); //false</code></pre>
+<p>Note the empty object <code class="language-javascript">{}</code> as the first argument — this will ensure you don't mutate the original object. </p>
+<p>This method allows uniting several objects into one, but it works like spread with nested objects. It also makes only a shallow copy:</p>
+<pre><code class="language-javascript">// above codes are used here
+
+const family = { brother: man };
+Object.assign(woman, family);
+console.log(woman); 
+/*
+{
+  name: 'Monica',
+  surname: 'Geller',
+  brother: {
+    name: 'Ross',
+    surname: 'Geller',
+    occupation: 'Paleontologist'
+  }
+}
+*/
+console.log(woman.brother === family.brother); //true
+console.log(woman.brother === man); //true
+console.log(man === family.brother); //true</code></pre>
+<p>As you can see, all these objects are references to one, and that's why they are equal.</p>
+<h5 id="conclusion">Conclusion</h5>
+<p>Objects are assigned and copied by reference, and are stored as a "reference" (address in memory) for the value. So, copying or passing such a variable as a function argument copies only that reference, not the object itself. To duplicate an object, you can use <code class="language-javascript">Object.assign()</code> or spread <code class="language-javascript">{ ...object }</code> for the shallow copy. However, be aware that there are some problems with cloning nested objects.</p>
+</div>

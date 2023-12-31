@@ -1,0 +1,18 @@
+type: choice
+is_multiple_choice: true
+options:
+  - text: "<code>Object.assign((), obj)</code>"
+  - text: "<code>{ ...obj}</code>"
+  - text: "<code>{ obj }</code>"
+  - text: "<code>Object. assign({}, obj)</code>"
+files:
+  - name: main.js
+    visible: true
+    text: |+
+      // You can experiment here, it won’t be checked
+    
+    learner_created: false
+feedback_link: https://hyperskill.org/learn/step/27911#comment
+status: Solved
+record: -1
+local_check: false

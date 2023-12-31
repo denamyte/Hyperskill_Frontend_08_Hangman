@@ -1,0 +1,15 @@
+type: code
+files:
+  - name: main.js
+    visible: true
+    highlight_level: NONE
+    text: "const shoppingList = { milk: 1, bread: 2, sugar: 1};\nconst addingList =\
+    \ { apple: 4, lemon: 2 };     \n//write your code here"
+    learner_created: false
+feedback_link: https://hyperskill.org/learn/step/27913#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: "Sun, 31 Dec 2023 20:09:52 UTC"
+record: -1
+submission_language: javascript

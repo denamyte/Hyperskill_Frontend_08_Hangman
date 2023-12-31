@@ -1,0 +1,146 @@
+<h2>Map</h2>
+<div class="step-text">
+<p>JavaScript provides several data structures for developers to use in their applications for storing and managing data. In this topic, you'll learn about the <strong>Map</strong> data structure. You might already have an idea of what a map looks like, as it is similar to the dictionary data structure in other programming languages. The <code class="language-javascript">Map</code> object has key-value pairs, as well as many other properties or methods that you'll learn in this topic.</p>
+<h5 id="map-constructor">Map constructor</h5>
+<p>The <code class="language-javascript">Map</code> object in JavaScript is a collection of key-value pairs where each key can be any data type, and the values can be of any type, including the objects and functions. That means any value, primitive or an object, can be used as a key and a value in a <code class="language-javascript">Map</code> object. </p>
+<p>You can create a <code class="language-javascript">Map</code> object in JavaScript using a <strong>Map constructor</strong>, which is a built-in function in JavaScript. Let's see how you can create a <code class="language-javascript">Map</code> object using the Map constructor in the syntax below:</p>
+<pre><code class="language-javascript">const firstMap = new Map();
+</code></pre>
+<p>This syntax explains how you can create a <code class="language-javascript">Map</code> object in JS. One important parameter of the Map constructor is that it accepts an optional iterable parameter for populating the Map with initial key-value pairs. The iterable parameter should be an array of arrays, with two items in each subarray: the key and the value. Let's see an example:</p>
+<pre><code class="language-javascript">const mapOfNames = new Map([
+  ["key-1", "value-1"],
+  ["key-2", "value-2"],
+  ["key-3", "value-3"],
+  ["key-4", "value-4"],
+]);
+
+console.log(mapOfNames);
+
+// Output
+
+Map(4) {
+  'key-1' =&gt; 'value-1',
+  'key-2' =&gt; 'value-2',
+  'key-3' =&gt; 'value-3',
+  'key-4' =&gt; 'value-4'
+}</code></pre>
+<p>As you can see, the <code class="language-javascript">Map</code> object holds the key-value pairs and is arranged in the order of insertion of the keys. Each key is unique, which helps prevent redundancy in the data. You can also add key-value pairs using various methods available for the <code class="language-javascript">Map</code> object, which we'll discuss in the next section.</p>
+<p></p><div class="alert alert-warning">A key in the <code class="language-javascript">Map</code> may occur only once, which means every key is unique in a <code class="language-javascript">Map</code>'s collection.</div>
+<h5 id="map-methods">Map methods</h5>
+<p>There are different methods available to manipulate or manage the data in the Map's collection. Let's discuss them one by one with examples.</p>
+<ul>
+<li><strong>The set method: Map.set(key, value)</strong></li>
+</ul>
+<p>Another way to add the key-value pairs in the <code class="language-javascript">Map</code> object is by using the <code class="language-javascript">set()</code> method. This method takes two arguments: a key and a value. If the key already exists in the <code class="language-javascript">Map</code>, the set method will update the value associated with that key. Let's see an example:</p>
+<pre><code class="language-javascript">// students.js
+
+const students = new Map();
+
+students.set(1, "John Mathews");
+students.set("2", "Harry Rott");
+students.set(3, "Kross Maiden");
+students.set(1, "Riks Helly"); // updates the value for key 1
+
+console.log(students);
+
+// Output
+
+Map(3) { 1 =&gt; 'Riks Helly', '2' =&gt; 'Harry Rott', 3 =&gt; 'Kross Maiden' }</code></pre>
+<p>This is how you can add key-value pairs to a <code class="language-javascript">Map</code> object and manipulate the data. Note that the value of the key <code class="language-javascript">1</code> changes when we reassign the value with a new key and becomes "Kross Maiden".</p>
+<ul>
+<li><strong>The get Method: Map.get(key)</strong></li>
+</ul>
+<p>Now that we have set the keys and values in the map, we need to be able to access the set values with the key. The <code class="language-javascript">get()</code> method is used to get the value from the key. The elements of the respective key are extracted. Look at the example below:</p>
+<pre><code class="language-javascript">// Code from students.js 
+
+console.log(students.get(1));
+console.log(students.get("2"));
+console.log(students.get(2));
+
+// Output
+
+Riks Helly
+Harry Rott
+undefined</code></pre>
+<p>You can access the value associated with the given key. If the provided key to the <code class="language-javascript">get()</code> method doesn't exist in the <code class="language-javascript">Map</code> object, it will give <code class="language-javascript">undefined</code>. In the example above, the key <code class="language-javascript">2</code> doesn't exist, so it gives <code class="language-javascript">undefined</code> but the key <code class="language-javascript">"2"</code> exists, and it gives the output as "Harry Rott".</p>
+<h5 id="other-properties">Other properties</h5>
+<p>Now you know how to create a <code class="language-javascript">Map</code> object using the Map constructor method and how to set and get key-value pairs from a <code class="language-javascript">Map</code> object. But there are also other properties and methods that you can use on the <code class="language-javascript">Map</code> object;</p>
+<ul>
+<li><strong>Size: Map.size</strong></li>
+</ul>
+<p>Sometimes we need to know the <code class="language-javascript">Map</code> object's size, which can be done with the <code class="language-javascript">size</code> property. The <code class="language-javascript">size</code> property returns the number of key-value pairs in the <code class="language-javascript">Map</code> object. Let's take an example:</p>
+<pre><code class="language-javascript">// Code from students.js
+
+console.log(students.size); // 3</code></pre>
+<p>As there are three elements in the <code class="language-javascript">students</code> map object, the expected output will be <code class="language-javascript">3</code>.</p>
+<ul>
+<li><strong>Has: Map.has(key)</strong></li>
+</ul>
+<p>The <code class="language-javascript">has()</code> method checks whether a specific key exists in the <code class="language-javascript">Map</code> object. It returns a boolean value, that is, <code class="language-javascript">true</code> if the key exists and <code class="language-javascript">false</code> otherwise. Here is an example of it:</p>
+<pre><code class="language-javascript">// Code from students.js
+
+console.log(students.has("1")); // false
+console.log(students.has(1)); // true
+console.log(students.has(2)); // false
+console.log(students.has("2")); // true</code></pre>
+<ul>
+<li><strong>Delete: Map.delete(key)</strong></li>
+</ul>
+<p>The <code class="language-javascript">delete()</code> method removes the key-value pair from the <code class="language-javascript">Map</code> object. Here is an example:</p>
+<pre><code class="language-javascript">// Code from students.js
+
+students.delete(1);
+console.log(students); // Map(2) { '2' =&gt; 'Harry Rott', 3 =&gt; 'Kross Maiden' }
+
+students.delete("2");
+console.log(students); // Map(1) { 3 =&gt; 'Kross Maiden' }
+</code></pre>
+<ul>
+<li><strong>Clear: Map.clear()</strong></li>
+</ul>
+<p>Now we know how to delete a specific key-value pair from a <code class="language-javascript">Map</code> using the delete method. There is another method called the <code class="language-javascript">clear</code> method, to remove an entire key-value pair from the <code class="language-javascript">Map</code>.</p>
+<pre><code class="language-javascript">// Code from students.js
+
+students.clear();
+console.log(students);</code></pre>
+<h5 id="iterations">Iterations</h5>
+<p>Now that we have created and populated our <code class="language-javascript">Map</code> object with some key-value pairs, it's time to iterate over the <code class="language-javascript">Map</code>. In this section, we'll discuss two methods for iterating over a map.</p>
+<ul>
+<li><strong>Using for...of loop</strong></li>
+</ul>
+<p>One simple way to iterate over a <code class="language-javascript">Map</code> object is to use a <code class="language-javascript">for...of</code> loop:</p>
+<pre><code class="language-javascript">for (const [key, value] of students) {
+  console.log(`${key} = ${value}`);
+}
+
+// Output
+
+1 = Riks Helly
+2 = Harry Rott
+3 = Kross Maiden</code></pre>
+<ul>
+<li><strong>Using forEach method</strong></li>
+</ul>
+<p>Another way is to use the <code class="language-javascript">forEach()</code> method:</p>
+<pre><code class="language-javascript">// Code from students.js
+
+students.forEach((value, key) =&gt; {
+  console.log(`${key} = ${value}`);
+});
+
+// Output
+
+1 = Riks Helly
+2 = Harry Rott
+3 = Kross Maiden</code></pre>
+<p>In this method, <code class="language-javascript">forEach()</code> is called on the <code class="language-javascript">Map</code> object, and a callback function is passed as an argument. The callback function is called once for each entry in the map, and the key and value of each entry are passed as arguments to the function.</p>
+<h5 id="maps-vs-objects">Maps vs objects</h5>
+<p>Maps and objects both store data in the form of key-value pairs, but there are some crucial differences between them.</p>
+<ul>
+<li>Keys in a map can be any value, while keys in an object are limited to strings and symbols.</li>
+<li>Maps maintain the order of their entries, while the order of keys in an object is not maintained.</li>
+<li>Maps are often faster and more efficient than objects when working with large sets of data.</li>
+</ul>
+<h5 id="conclusion">Conclusion</h5>
+<p>In this topic, you learned about the <code class="language-javascript">Map</code> object in JavaScript, a powerful tool for creating collections of key-value pairs. It provides a variety of practical methods and properties you can use to manipulate and retrieve data in the map. You learned to use the Map constructor to create a new <code class="language-javascript">Map</code> object, and then populate it with key-value pairs using the <code class="language-javascript">set()</code> method. The <code class="language-javascript">get()</code> method can then be used to retrieve the value associated with a particular key. There are several other properties like <code class="language-javascript">delete</code>, <code class="language-javascript">clear</code>, <code class="language-javascript">size</code>, and more, which are beneficial while working with the <code class="language-javascript">Map</code> object.</p>
+</div>

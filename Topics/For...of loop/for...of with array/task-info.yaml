@@ -1,0 +1,18 @@
+type: code
+files:
+  - name: main.js
+    visible: true
+    highlight_level: NONE
+    text: |-
+      function loopArray(arr){
+          // write your code here
+      
+      }
+    learner_created: false
+feedback_link: https://hyperskill.org/learn/step/27397#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: "Sun, 31 Dec 2023 12:59:17 UTC"
+record: -1
+submission_language: javascript

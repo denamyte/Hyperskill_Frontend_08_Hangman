@@ -3,3 +3,7 @@ content:
   - Break and continue statements
   - Anonymous function
   - Array iterating
+  - For...of loop
+  - Shallow Copying Objects
+  - Deep Copying Objects
+  - Map

@@ -1,0 +1,19 @@
+type: choice
+is_multiple_choice: false
+options:
+  - text: ' We will get an error.'
+  - text: It will print the object keys to the console.
+  - text: It will print the properties of the object in the console.
+  - text: It will print the object values to the console.
+files:
+  - name: main.js
+    visible: true
+    text: |+
+      // You can experiment here, it won’t be checked
+    
+    learner_created: false
+feedback_link: https://hyperskill.org/learn/step/27393#comment
+status: Solved
+record: -1
+custom_name: What if?
+local_check: false

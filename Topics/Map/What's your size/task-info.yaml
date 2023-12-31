@@ -1,0 +1,14 @@
+type: code
+custom_name: What's your size?
+files:
+  - name: main.js
+    visible: true
+    highlight_level: NONE
+    learner_created: false
+feedback_link: https://hyperskill.org/learn/step/28292#comment
+status: Solved
+feedback:
+  message: <html>Correct solution</html>
+  time: "Sun, 31 Dec 2023 20:59:40 UTC"
+record: -1
+submission_language: javascript

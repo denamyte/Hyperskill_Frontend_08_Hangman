@@ -1,0 +1,19 @@
+type: choice
+is_multiple_choice: false
+options:
+  - text: It will print to the console the array <code>newArr</code> that has no elements.
+  - text: "It will print to the console the array <code>newArr</code>, which is a copy\
+    \ of the array <code>myArray</code>."
+  - text: We will get an error due to an infinite loop.
+files:
+  - name: main.js
+    visible: true
+    text: |+
+      // You can experiment here, it won’t be checked
+    
+    learner_created: false
+feedback_link: https://hyperskill.org/learn/step/27394#comment
+status: Solved
+record: -1
+custom_name: What if?
+local_check: false
